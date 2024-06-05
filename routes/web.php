@@ -20,4 +20,5 @@ Route::get('/', function () {
 Route::get('/mahasiswa/index', [MahasiswaController::class,'index']);
 Route::get('/mahasiswa/tambah', [MahasiswaController::class,'tambah']);
 Route::post('/mahasiswa/tambah_data', [MahasiswaController::class,'tambah_data']);
-Route::get('/mahasiswa/ubah', [MahasiswaController::class,'ubah']);
+Route::get('/mahasiswa/edit/{id}', [MahasiswaController::class,'ubah']);
+Route::post('/mahasiswa/edit_data', [MahasiswaController::class,'edit_data']);

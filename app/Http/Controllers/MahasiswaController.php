@@ -26,11 +26,35 @@ class MahasiswaController extends Controller
             ]
         );
         if($insert){
-            return redirect('mahasiswa');
+            return redirect('mahasiswa/index');
         }
     }
 
-    function ubah(){
-        return "ubah";
+    function ubah(Request $req){
+        $nim = $req->segment(3);
+        $data_edit = DB::table('tb_mahasiswa')
+        ->where('NIM',$nim)
+        ->first();
+        // dd($data_edit);
+        return view('edit',['data_mhs'=>$data_edit]);
+    }
+
+    function edit_data(Request $req){
+        $data_ubah = [
+            'Nama'=> $req->nama,
+            'Tempat_lahir'=>$req->tempat_lahir,
+            'Tanggal_Lahir'=>$req->tanggal_lahir,
+            'Prodi'=>$req->prodi,
+            'Alamat'=>$req->alamat
+        ];
+
+        $edit = DB::table('tb_mahasiswa')
+        ->where('NIM',$req->nim)
+        ->update($data_ubah);
+
+        if($edit){
+            return redirect('mahasiswa/index');
+        }
+
     }
 }

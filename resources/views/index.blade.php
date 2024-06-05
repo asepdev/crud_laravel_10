@@ -22,7 +22,7 @@
                 <td>{{$d->Prodi}}</td>
                 <td>{{$d->Alamat}}</td>
                 <td>
-                    <a href="">Edit</a>
+                    <a href="edit/{{$d->NIM}}">Edit</a>
                     <a href="">Hapus</a>
                 </td>
             </tr>
